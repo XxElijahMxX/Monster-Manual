@@ -10,10 +10,17 @@ const app = express();
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars');
 
+// niddleware for body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => res.send('INDEX'));
+// Index route
+app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+
+// add route
+app.get("/add", (req, res) => res.send("add"))
 
 // Monster routes
 app.use('/monsters', require('./routes/monsters'));

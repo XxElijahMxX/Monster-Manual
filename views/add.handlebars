@@ -1,0 +1,24 @@
+<!-- this creates the form to add a monster -->
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Add A Monster</h1>
+      <p>Got a monster to add the manual? Fill out the fields below!</p>
+      {{#each errors}}
+        <p>{{text}}</p>
+      {{/each}}
+      <form action="/monsters/add" method="POST">
+        <div class="input-group">
+          <label for="title">Monster Name</label>
+          <input type="text" name="name" id="name" class="input-box" placeholder="What is the name of your monster?"
+            maxlength="100" value={{name}}>
+        </div>
+    
+        <div class="input-group">
+          <label for="description">Monster Description</label>
+          <textarea name="description" id="description" class="input-box" placeholder="Details of the monster your adding"
+            rows="10">{{description}}</textarea>
+        </div>
+        <input type="submit" value="Add Monster" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>

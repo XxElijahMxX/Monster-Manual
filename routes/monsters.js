@@ -3,35 +3,58 @@ const router = express.Router();
 const db = require('../config/connection');
 const Monsters = require('../models/Monsters');
 const Mons = require('../models/Monsters');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // Get monsters list
 router.get('/', (req, res) => 
     Mons.findAll({ raw: true })
-    .then(monsters => {
+    .then(monsters => 
         res.render('monsters', {
             monsters
-        });
-    })
+        }))
     .catch(err => console.log(err)));
 
+// Display monster form
+router.get('/add', (req, res) => res.render('add'));
+
 // Add a monster
-router.get('/add', (req, res) => {
-    const data = {
-        name: 'Zombie',
-        description: `Watch out! These monsters are ferocious and not too mention mindless. 
-        Driven by an insane hunger Zombies roam the world and eat just about anything that moves.
-        Lucky for us the Zombie is a very slow moving monster and has a ton of weaknesses. 
-        Best practice is to always aim for the head.`
+router.post('/add', (req, res) => {
+    let { name, description } = req.body;
+    let errors = [];
+
+// validating the fields in the add form
+    if(!name) {
+        errors.push({ text: 'You did not give your monster a name' });
+    }
+    if(!description) {
+        errors.push({ text: 'You did not give your monster any details' });
     }
 
-    let { name, description } = data;
+    // this checks for errors
+    if(errors.length > 0) {
+        res.render('add', {
+            errors,
+            name, description
+        });
+    } else {
+     // this will insert the data into a table
+        Monsters.create({
+            name,
+            description
+        })
+        .then(monsters => res.redirect('/monsters'))
+        .catch(err => console.log(err));
+      }
+    });
 
-    // this will insert the data into a table
-    Monsters.create({
-        name,
-        description
-    })
-    .then(monsters => res.redirect('/monsters'))
-    .catch(err => console.log(err));
-})
+    // Search for a monster
+    router.get('/search', (req, res) => {
+        const { name } =req.query;
+
+        Mons.findOne({ where: { name: { [Op.like]: name } } })
+        .then(monsters => res.render('monsters', { monsters}))
+        .catch(err => console.log(err))
+    });
+
 module.exports = router;
