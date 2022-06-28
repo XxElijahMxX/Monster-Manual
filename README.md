@@ -32,3 +32,7 @@
   Project created by Sheridan Melton, Kyle Perry, and Michael Wright
   
   Contact one of the contributors with any questions
+  
+  Sheridan - https://github.com/XxElijahMxX
+  Kyle - https://github.com/MrPerry365
+  Michael - https://github.com/MWright98
