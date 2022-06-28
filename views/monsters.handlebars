@@ -1,0 +1,12 @@
+  <section id="monsters" class="container">
+    <h1>All Monsters</h1>
+
+    {{#each monsters}}
+    <div class="monsters">
+      <h3>{{name}}</h3>
+      <p>{{description}}</p>
+    </div>
+    {{else}}
+    <p>There were no monsters found!</p>
+    {{/each}}
+  </section>

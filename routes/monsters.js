@@ -6,10 +6,11 @@ const Mons = require('../models/Monsters');
 
 // Get monsters list
 router.get('/', (req, res) => 
-    Mons.findAll()
+    Mons.findAll({ raw: true })
     .then(monsters => {
-        console.log(monsters);
-        res.sendStatus(200);
+        res.render('monsters', {
+            monsters
+        });
     })
     .catch(err => console.log(err)));
 

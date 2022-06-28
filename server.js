@@ -7,7 +7,7 @@ const sequelize = require('./config/connection');
 const app = express();
 
 // middleware for handlebars
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars');
 
 // static folder
