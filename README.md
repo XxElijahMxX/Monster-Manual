@@ -13,7 +13,7 @@
 
   ## Installation
   To install dependencies run "npm i"
-  To use program run "npm run seed" in the root folder then "npm start"
+  To use the program run "npm start" from the command line 
   or view the deployment at: ...
 
   ## Usage
