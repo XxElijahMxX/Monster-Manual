@@ -52,8 +52,8 @@ router.post('/add', (req, res) => {
         const { term } =req.query;
 
         Mons.findOne({ where: { name: term } } )
-        .then(monsters => {
-            res.render('monster', monsters)
+        .then(monster => {
+            res.render('monster', monster)
         })
         .catch(err => console.log(err))
     });

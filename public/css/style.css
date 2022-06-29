@@ -14,9 +14,11 @@
 body {
   font-family: 'Lato', sans-serif;
   margin: 0;
-  color: #333;
-  background: #fff;
-  
+  color: rgb(2, 2, 2) ;
+  background: url('../img/monster-wallpaper-1080p-471555.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 ul {
@@ -164,8 +166,8 @@ input[type='search'] {
   flex-basis: 600px;
 }
 
-/* Gigs */
-.gig {
+/* Mons */
+.mons {
   background: var(--bg-color);
   border-bottom: 4px solid var(--primary-color);
   color: #fff;
@@ -174,17 +176,17 @@ input[type='search'] {
   box-shadow: var(--box-shadow);
 }
 
-.gig ul {
+.mons ul {
   list-style: none;
   display: flex;
 }
 
-.gig li {
+.mons li {
   margin-right: 0.5rem;
   padding: 0.6rem;
 }
 
-.gig .tech span {
+.mons  span {
   color: var(--primary-color);
 }
 
@@ -257,11 +259,11 @@ label {
     padding: 2.3rem;
   }
 
-  .gig ul {
+  .mons ul {
     flex-direction: column;
   }
 
-  .gig .btn {
+  .mons .btn {
     display: block;
     margin-top: 1rem;
     text-align: center;
