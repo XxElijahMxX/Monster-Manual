@@ -1,13 +1,12 @@
  <!-- This displays the data from the database as cards to get all monsters -->
   <section id="monsters" class="container">
-    <h1>All Monsters</h1>
+    <h1>Monsters</h1>
+    
 
-    {{#each monsters}}
+    {{!-- {{#each monsters}} --}}
     <div class="monsters">
-      <h3>{{name}}</h3>
-      <p>{{description}}</p>
+      <h3>{{dataValues.name}}</h3>
+      <p>{{dataValues.description}}</p>
     </div>
-    {{else}}
-    <p>There were no monsters found!</p>
-    {{/each}}
+    {{!-- {{/each}} --}}
   </section>

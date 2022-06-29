@@ -4,7 +4,6 @@ const db = require('../config/connection');
 const Monsters = require('../models/Monsters');
 const Mons = require('../models/Monsters');
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 
 // Get monsters list
 router.get('/', (req, res) => 
@@ -50,10 +49,12 @@ router.post('/add', (req, res) => {
 
     // Search for a monster
     router.get('/search', (req, res) => {
-        const { name } =req.query;
+        const { term } =req.query;
 
-        Mons.findOne({ where: { name: { [Op.like]: name } } })
-        .then(monsters => res.render('monsters', { monsters}))
+        Mons.findOne({ where: { name: term } } )
+        .then(monsters => {
+            res.render('monster', monsters)
+        })
         .catch(err => console.log(err))
     });
 
