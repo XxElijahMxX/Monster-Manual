@@ -4,6 +4,7 @@ const db = require('../config/connection');
 const Monsters = require('../models/Monsters');
 const Mons = require('../models/Monsters');
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // Get monsters list
 router.get('/', (req, res) => 

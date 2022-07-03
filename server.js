@@ -25,6 +25,8 @@ app.get("/add", (req, res) => res.send("add"))
 // Monster routes
 app.use('/monsters', require('./routes/monsters'));
 
+app.use('/users', require('./routes/users'));
+
 const PORT = process.env.PORT || 3001;
 
 sequelize.sync({ force: false }).then(() => {
