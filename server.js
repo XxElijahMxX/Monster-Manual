@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./config/connection');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.set('view engine', 'handlebars');
 
 // niddleware for body parser
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// middleware for cookies
+app.use(cookieParser());
 
 // static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -24,8 +28,6 @@ app.get("/add", (req, res) => res.send("add"))
 
 // Monster routes
 app.use('/monsters', require('./routes/monsters'));
-
-app.use('/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 3001;
 
