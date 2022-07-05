@@ -29,7 +29,7 @@ app.get("/add", (req, res) => res.send("add"))
 // Monster routes
 app.use('/monsters', require('./routes/monsters'));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3306;
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}!`));
